@@ -1,9 +1,15 @@
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly service: AuthService) {}
+
+
+  @Get("ping")
+  ping() {
+    return "pong";
+  }
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
